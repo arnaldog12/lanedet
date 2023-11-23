@@ -1,0 +1,15 @@
+name: clrnet
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - cuda
+  - pip
+  - python=3.9
+  - ca-certificates
+  - openssl
+  - pytorch
+  - torchvision
+  - pytorch-cuda=12.1
+  - ipython
+  - certifi
