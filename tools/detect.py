@@ -5,11 +5,16 @@ import os
 import os.path as osp
 import glob
 import argparse
-from lanedet.datasets.process import Process
-from lanedet.models.registry import build_net
-from lanedet.utils.config import Config
-from lanedet.utils.visualization import imshow_lanes
-from lanedet.utils.net_utils import load_network
+from clrnet.datasets.process import Process 
+from clrnet.models.registry import build_net 
+from clrnet.utils.config import Config 
+from clrnet.utils.visualization import imshow_lanes 
+from clrnet.utils.net_utils import load_network
+# from lanedet.datasets.process import Process
+# from lanedet.models.registry import build_net
+# from lanedet.utils.config import Config
+# from lanedet.utils.visualization import imshow_lanes
+# from lanedet.utils.net_utils import load_network
 from pathlib import Path
 from tqdm import tqdm
 
@@ -35,7 +40,7 @@ class Detect(object):
     def inference(self, data):
         with torch.no_grad():
             data = self.net(data)
-            data = self.net.module.get_lanes(data)
+            data = self.net.module.heads.get_lanes(data)
         return data
 
     def show(self, data):
